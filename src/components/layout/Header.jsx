@@ -83,7 +83,7 @@ export default function Header() {
             <div className="flex items-center space-x-4">
               <a 
                 href="https://app.autotouch.ai/signin" 
-                className={`text-slate-600 hover:text-slate-900 transition-all duration-300 ${isScrolled ? 'opacity-0 pointer-events-none w-0 overflow-hidden' : 'opacity-100'}`}
+                className={`hidden md:block text-slate-600 hover:text-slate-900 transition-all duration-300 ${isScrolled ? 'opacity-0 pointer-events-none w-0 overflow-hidden' : 'opacity-100'}`}
               >
                 Sign in
               </a>
