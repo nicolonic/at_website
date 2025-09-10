@@ -1,16 +1,20 @@
 {
   "rewrites": [
     {
+      "source": "/blog",
+      "destination": "https://autotouch-ai-blog.webflow.io/blog"
+    },
+    {
       "source": "/blog/:path*",
-      "destination": "https://www.autotouch.ai/blog/:path*"
+      "destination": "https://autotouch-ai-blog.webflow.io/blog/:path*"
     },
     {
       "source": "/future-of-sales/:path*",
-      "destination": "https://www.autotouch.ai/future-of-sales/:path*"
+      "destination": "https://autotouch-ai-blog.webflow.io/future-of-sales/:path*"
     },
     {
       "source": "/post/:path*",
-      "destination": "https://www.autotouch.ai/post/:path*"
+      "destination": "https://autotouch-ai-blog.webflow.io/post/:path*"
     }
   ]
 }
