@@ -103,7 +103,7 @@ export default function IntegrationsAnimation({ isActive = true }) {
   }, [isActive]);
 
   return (
-    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-50 to-white p-2 sm:p-4 relative overflow-hidden">
+    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-50 to-white p-1 sm:p-4 relative overflow-auto sm:overflow-hidden">
       {/* Subtle background pattern */}
       <div 
         className="absolute inset-0 opacity-[0.03]"
@@ -118,11 +118,11 @@ export default function IntegrationsAnimation({ isActive = true }) {
         <div className="bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden">
           
           {/* Header */}
-          <div className="px-4 sm:px-6 py-3 sm:py-4 border-b border-slate-100 bg-gradient-to-r from-slate-50 to-white">
+          <div className="px-3 sm:px-6 py-2 sm:py-4 border-b border-slate-100 bg-gradient-to-r from-slate-50 to-white">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-xs sm:text-sm font-semibold text-slate-900">Integrated with your favorite tools</h3>
-                <p className="text-[10px] sm:text-xs text-slate-500 mt-0.5">Connect once, send from anywhere</p>
+                <h3 className="text-[10px] sm:text-sm font-semibold text-slate-900">Integrated with your favorite tools</h3>
+                <p className="text-[9px] sm:text-xs text-slate-500 mt-0.5 hidden sm:block">Connect once, send from anywhere</p>
               </div>
               <div className="flex items-center gap-2">
                 <span className="flex items-center gap-1 text-[10px] sm:text-xs text-slate-600">
@@ -134,20 +134,20 @@ export default function IntegrationsAnimation({ isActive = true }) {
           </div>
 
           {/* Integration categories */}
-          <div className="p-3 sm:p-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+          <div className="p-2 sm:p-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
               
               {/* Email Clients */}
               <div>
                 <div className="text-xs font-medium text-slate-500 mb-2 sm:mb-3 uppercase tracking-wider">Email Clients</div>
-                <div className="space-y-2">
+                <div className="space-y-1 sm:space-y-2">
                   {Object.entries(INTEGRATIONS)
                     .filter(([_, int]) => int.category === 'email')
                     .map(([key, integration]) => (
                       <div
                         key={key}
                         className={`
-                          p-2 sm:p-3 rounded-xl border-2 transition-all duration-500 cursor-pointer
+                          p-1.5 sm:p-3 rounded-lg sm:rounded-xl border sm:border-2 transition-all duration-500 cursor-pointer
                           ${selectedIntegration === key 
                             ? `${integration.bgColor} ${integration.borderColor} shadow-lg sm:transform sm:scale-105` 
                             : 'bg-white border-slate-200 hover:border-slate-300 hover:shadow-md'
@@ -197,14 +197,14 @@ export default function IntegrationsAnimation({ isActive = true }) {
               {/* Sales Engagement Tools */}
               <div className="mt-4 sm:mt-0">
                 <div className="text-xs font-medium text-slate-500 mb-2 sm:mb-3 uppercase tracking-wider">Sales Engagement</div>
-                <div className="space-y-2">
+                <div className="space-y-1 sm:space-y-2">
                   {Object.entries(INTEGRATIONS)
                     .filter(([_, int]) => int.category === 'sequencer')
                     .map(([key, integration]) => (
                       <div
                         key={key}
                         className={`
-                          p-2 sm:p-3 rounded-xl border-2 transition-all duration-500 cursor-pointer
+                          p-1.5 sm:p-3 rounded-lg sm:rounded-xl border sm:border-2 transition-all duration-500 cursor-pointer
                           ${selectedIntegration === key 
                             ? `${integration.bgColor} ${integration.borderColor} shadow-lg sm:transform sm:scale-105` 
                             : 'bg-white border-slate-200 hover:border-slate-300 hover:shadow-md'
