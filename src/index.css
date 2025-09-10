@@ -14,6 +14,14 @@
   * {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2;
   }
+  
+  /* Fix for SVG rendering issues on mobile */
+  img[src$=".svg"] {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    image-rendering: optimizeSpeed;
+  }
 }
 
 @layer components {

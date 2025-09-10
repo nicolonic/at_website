@@ -50,6 +50,12 @@ export default function Header() {
                   src={tokens.brand.logoSrc} 
                   alt={tokens.brand.name}
                   className="h-14 w-auto"
+                  loading="eager"
+                  decoding="async"
+                  style={{ 
+                    willChange: 'transform',
+                    contain: 'layout style paint'
+                  }}
                 />
               </Link>
             </div>
