@@ -103,7 +103,7 @@ export default function IntegrationsAnimation({ isActive = true }) {
   }, [isActive]);
 
   return (
-    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-50 to-white p-1 sm:p-4 relative overflow-auto sm:overflow-hidden">
+    <div className="w-full h-full flex flex-col bg-gradient-to-br from-slate-50 to-white p-1 sm:p-4 relative overflow-y-auto sm:overflow-hidden">
       {/* Subtle background pattern */}
       <div 
         className="absolute inset-0 opacity-[0.03]"
@@ -113,7 +113,7 @@ export default function IntegrationsAnimation({ isActive = true }) {
         }}
       />
       
-      <div className="w-full max-w-4xl relative z-10">
+      <div className="w-full max-w-4xl relative z-10 sm:my-auto">
         {/* Main showcase area */}
         <div className="bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden">
           
