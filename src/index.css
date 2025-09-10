@@ -25,6 +25,16 @@
       #ffffff;
   }
   
+  /* Soft pulse animation for status indicators */
+  @keyframes softpulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.65;
+    }
+  }
+  
   .grain-texture::after {
     content: '';
     position: absolute;
