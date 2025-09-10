@@ -108,7 +108,7 @@ export default function KeyFeatures() {
 
           {/* Right: Visual */}
           <div className="relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-xl bg-slate-900 aspect-video lg:aspect-[16/10]">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl bg-slate-900 aspect-[4/3] sm:aspect-video lg:aspect-[16/10]">
               <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900">
                 {/* Feature-specific animations */}
                 {activeFeature.id === 'email' || activeFeature.id === 'phone' ? (

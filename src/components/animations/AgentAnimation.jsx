@@ -146,7 +146,7 @@ export default function AgentAnimation({ isActive }) {
   };
 
   return (
-    <div className="h-full flex flex-col items-center justify-center p-2 sm:p-4 relative">
+    <div className="h-full flex flex-col items-center justify-center p-1 sm:p-4 relative">
       
       {/* Query Input */}
       <div className={`absolute top-2 sm:top-4 left-2 sm:left-4 right-2 sm:right-4 transition-all duration-500 ${
@@ -155,8 +155,8 @@ export default function AgentAnimation({ isActive }) {
         <div className="bg-white/5 backdrop-blur-sm border border-slate-700 rounded-lg p-2 sm:p-3">
           <div className="flex items-center gap-1 sm:gap-2">
             <div className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-green-400 rounded-full animate-pulse flex-shrink-0" />
-            <span className="text-[10px] sm:text-xs text-slate-400">Query:</span>
-            <span className="text-[11px] sm:text-sm text-white font-medium truncate">{currentQuery.query}</span>
+            <span className="text-xs sm:text-xs text-slate-400">Query:</span>
+            <span className="text-xs sm:text-sm text-white font-medium">{currentQuery.query}</span>
           </div>
         </div>
       </div>
@@ -170,16 +170,16 @@ export default function AgentAnimation({ isActive }) {
             <div className="text-center mb-2 sm:mb-4">
               <div className="inline-flex items-center gap-1 sm:gap-2">
                 <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center animate-pulse">
-                  <span className="text-white text-[10px] sm:text-xs font-bold">AI</span>
+                  <span className="text-white text-xs sm:text-xs font-bold">AI</span>
                 </div>
-                <span className="text-[10px] sm:text-xs text-slate-500">Analyzing...</span>
+                <span className="text-xs sm:text-xs text-slate-500">Analyzing...</span>
               </div>
             </div>
             <div className="space-y-1">
               {currentQuery.thinking.map((thought, index) => (
                 <div
                   key={index}
-                  className={`px-2 sm:px-3 py-1 sm:py-1.5 bg-slate-800/50 rounded text-[10px] sm:text-xs text-slate-400 transition-all duration-300 ${
+                  className={`px-2 sm:px-3 py-1 sm:py-1.5 bg-slate-800/50 rounded text-xs sm:text-xs text-slate-400 transition-all duration-300 ${
                     visibleThoughts.includes(index) 
                       ? 'opacity-100 translate-x-0' 
                       : 'opacity-0 -translate-x-4'
@@ -200,7 +200,7 @@ export default function AgentAnimation({ isActive }) {
                 <div className={`w-10 sm:w-14 h-10 sm:h-14 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center ${
                   phase === PHASES.SEARCHING ? 'animate-pulse' : ''
                 }`}>
-                  <span className="text-white text-[10px] sm:text-sm font-bold">AI</span>
+                  <span className="text-white text-xs sm:text-sm font-bold">AI</span>
                 </div>
                 {phase === PHASES.SEARCHING && (
                   <div className="absolute inset-0 rounded-full border-2 border-blue-400/30 animate-ping" />
@@ -209,27 +209,27 @@ export default function AgentAnimation({ isActive }) {
             </div>
 
             {/* Active Searches */}
-            <div className="grid grid-cols-3 gap-1 sm:gap-3 mb-3 sm:mb-6">
+            <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-3 sm:mb-6">
               {activeSearches.map((search, index) => (
                 <div
                   key={index}
-                  className={`p-1.5 sm:p-2 rounded-lg border transition-all duration-500 ${
+                  className={`p-2 sm:p-2 rounded-lg border transition-all duration-500 min-h-[60px] sm:min-h-[auto] ${
                     search.status === 'searching' 
                       ? 'border-blue-500/50 bg-blue-500/10' 
                       : 'border-green-500/30 bg-green-500/5'
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-0.5 sm:mb-1">
-                    <span className="text-[9px] sm:text-xs text-slate-300 truncate">{search.tool}</span>
+                  <div className="flex items-center justify-between mb-1 sm:mb-1">
+                    <span className="text-[11px] sm:text-xs text-slate-300 truncate">{search.tool}</span>
                     {search.status === 'searching' ? (
-                      <div className="w-1 sm:w-1.5 h-1 sm:h-1.5 bg-blue-400 rounded-full animate-pulse flex-shrink-0" />
+                      <div className="w-1.5 sm:w-1.5 h-1.5 sm:h-1.5 bg-blue-400 rounded-full animate-pulse flex-shrink-0" />
                     ) : (
-                      <svg className="w-2.5 sm:w-3 h-2.5 sm:h-3 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-3 sm:w-3 h-3 sm:h-3 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                       </svg>
                     )}
                   </div>
-                  <div className="text-[8px] sm:text-[10px] text-slate-500 line-clamp-2">
+                  <div className="text-[10px] sm:text-[10px] text-slate-500 line-clamp-2">
                     {search.status === 'complete' ? search.result : 'Searching...'}
                   </div>
                 </div>
@@ -239,12 +239,12 @@ export default function AgentAnimation({ isActive }) {
             {/* Collected Results */}
             {phase === PHASES.COLLECTING && (
               <div className="bg-slate-800/30 rounded-lg p-2 sm:p-3">
-                <div className="text-[10px] sm:text-xs text-slate-500 mb-1 sm:mb-2">Gathering intelligence...</div>
+                <div className="text-xs sm:text-xs text-slate-500 mb-1 sm:mb-2">Gathering intelligence...</div>
                 <div className="space-y-0.5 sm:space-y-1">
                   {collectedResults.map((result, index) => (
                     <div
                       key={index}
-                      className="text-[10px] sm:text-xs text-slate-300 animate-fadeIn"
+                      className="text-xs sm:text-xs text-slate-300 animate-fadeIn"
                       style={{ animationDelay: `${index * 50}ms` }}
                     >
                       • {result}
@@ -263,10 +263,10 @@ export default function AgentAnimation({ isActive }) {
               <svg className="w-4 sm:w-5 h-4 sm:h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span className="text-[11px] sm:text-sm text-green-400">Research Complete</span>
+              <span className="text-xs sm:text-sm text-green-400">Research Complete</span>
             </div>
             <div className="bg-green-500/5 border border-green-500/20 rounded-lg p-2 sm:p-4 max-w-md">
-              <div className="text-[10px] sm:text-xs text-slate-400 space-y-0.5 sm:space-y-1">
+              <div className="text-xs sm:text-xs text-slate-400 space-y-0.5 sm:space-y-1">
                 {currentQuery.results.slice(0, 3).map((result, index) => (
                   <div key={index}>• {result}</div>
                 ))}
