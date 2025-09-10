@@ -20,7 +20,31 @@ export default function StartFreeTrial() {
     }
 
     try {
-      // Track the submission (you can replace this with your actual tracking/storage logic)
+      // Send to Make.com webhook
+      const webhookUrl = 'https://hook.us1.make.com/pt6nt4d35hxbwob859u14nivdqbamc77';
+      
+      const webhookData = {
+        email: email,
+        timestamp: new Date().toISOString(),
+        source: 'website_free_trial',
+        userAgent: navigator.userAgent,
+        referrer: document.referrer || 'direct',
+        page: window.location.href
+      };
+
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(webhookData)
+      });
+
+      if (!response.ok) {
+        throw new Error('Webhook failed');
+      }
+
+      // Track the submission for analytics
       if (typeof window !== 'undefined' && window.analytics) {
         window.analytics.track('free_trial_form_submit', {
           email: email,
@@ -28,13 +52,14 @@ export default function StartFreeTrial() {
         });
       }
 
-      // Store email in localStorage (optional - you might want to send to a backend instead)
+      // Store email in localStorage as backup
       localStorage.setItem('trial_lead_email', email);
       localStorage.setItem('trial_lead_timestamp', new Date().toISOString());
 
       // Redirect to signup page
       window.location.href = 'https://app.autotouch.ai/signup';
     } catch (err) {
+      console.error('Webhook error:', err);
       setError('Something went wrong. Please try again.');
       setIsSubmitting(false);
     }
