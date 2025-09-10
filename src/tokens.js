@@ -75,12 +75,12 @@ export const tokens = {
     }
   },
   "logos": [
-    { "src": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg", "alt": "Google" },
-    { "src": "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg", "alt": "Microsoft" },
-    { "src": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg", "alt": "Amazon" },
-    { "src": "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg", "alt": "Microsoft" },
-    { "src": "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg", "alt": "Netflix" },
-    { "src": "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg", "alt": "IBM" }
+    { "src": "/logos/google.svg", "alt": "Google", "fallback": "https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg" },
+    { "src": "/logos/microsoft.svg", "alt": "Microsoft", "fallback": "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b" },
+    { "src": "/logos/amazon.svg", "alt": "Amazon", "fallback": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" },
+    { "src": "/logos/tesla.svg", "alt": "Tesla", "fallback": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Tesla_T_symbol.svg" },
+    { "src": "/logos/netflix.svg", "alt": "Netflix", "fallback": "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" },
+    { "src": "/logos/ibm.svg", "alt": "IBM", "fallback": "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" }
   ],
   "quote": {
     "text": "My SDRs were productive in 10 minutes, not 10 weeks. When we needed help with our outbound strategy, we got advice from people who've actually carried quotas.",

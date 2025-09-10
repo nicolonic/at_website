@@ -94,12 +94,12 @@ export default function WaterfallAnimation({ isActive, isPhone = false }) {
   }, [isActive]);
 
   return (
-    <div className="h-full flex flex-col items-center justify-center p-6">
+    <div className="h-full flex flex-col items-center justify-center p-3 sm:p-6">
       {/* Input at top */}
-      <div className="mb-6 text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/5 backdrop-blur-sm rounded-md border border-slate-700">
-          <span className="text-slate-500 text-xs">Finding {isPhone ? 'phone for' : 'email'}:</span>
-          <span className="text-slate-300 text-xs font-mono">
+      <div className="mb-2 sm:mb-4 text-center">
+        <div className="inline-flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 bg-white/5 backdrop-blur-sm rounded-md border border-slate-700">
+          <span className="text-slate-500 text-[10px] sm:text-xs">Finding {isPhone ? 'phone' : 'email'}:</span>
+          <span className="text-slate-300 text-[10px] sm:text-xs font-mono truncate max-w-[180px] sm:max-w-none">
             {isPhone ? `${currentLead.name.split('.').map(n => n.charAt(0).toUpperCase() + n.slice(1)).join(' ')} @ ${currentLead.domain.split('.')[0].charAt(0).toUpperCase() + currentLead.domain.split('.')[0].slice(1)}` : `${currentLead.name}@${currentLead.domain}`}
           </span>
         </div>
@@ -128,56 +128,56 @@ export default function WaterfallAnimation({ isActive, isPhone = false }) {
               {/* Provider card */}
               <div 
                 className={`
-                  relative flex items-center gap-3 p-2.5 rounded-lg border transition-all duration-700 ease-out transform
-                  ${isActive && !isSuccess && !isPassed ? 'border-blue-500/50 bg-blue-500/5 translate-x-1' : ''}
-                  ${isSuccess ? 'border-green-500/50 bg-green-500/5 scale-[1.02]' : ''}
-                  ${isPassed ? 'border-slate-700 bg-slate-800/30 opacity-40 scale-[0.98]' : 'border-slate-700 bg-slate-800/20'}
-                  ${!isActive ? 'opacity-30 scale-95' : ''}
+                  relative flex items-center gap-2 sm:gap-3 p-2 sm:p-2.5 rounded-lg border transition-all duration-700 ease-out transform
+                  ${isActive && !isSuccess && !isPassed ? 'border-blue-500/50 bg-blue-500/5 sm:translate-x-1' : ''}
+                  ${isSuccess ? 'border-green-500/50 bg-green-500/5 sm:scale-[1.02]' : ''}
+                  ${isPassed ? 'border-slate-700 bg-slate-800/30 opacity-40 sm:scale-[0.98]' : 'border-slate-700 bg-slate-800/20'}
+                  ${!isActive ? 'opacity-30 sm:scale-95' : ''}
                 `}
                 style={{
                   transitionDelay: `${index * 50}ms`
                 }}
               >
                 {/* Logo */}
-                <div className="w-16 flex items-center justify-center">
+                <div className="w-12 sm:w-16 flex items-center justify-center flex-shrink-0">
                   <img 
                     src={provider.logo} 
                     alt={provider.name}
-                    className={`h-4 w-auto ${!isActive ? 'grayscale opacity-50' : ''}`}
+                    className={`h-3 sm:h-4 w-auto ${!isActive ? 'grayscale opacity-50' : ''}`}
                   />
                 </div>
                 
                 {/* Name */}
-                <div className="flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-slate-300 text-xs">{provider.name}</span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <span className="text-slate-300 text-[10px] sm:text-xs truncate">{provider.name}</span>
                     {provider.isVerifier && (
-                      <span className="text-[10px] px-1 py-0.5 bg-slate-700/50 rounded text-slate-500">Verify</span>
+                      <span className="text-[8px] sm:text-[10px] px-0.5 sm:px-1 py-0.5 bg-slate-700/50 rounded text-slate-500">Verify</span>
                     )}
                   </div>
                 </div>
                 
                 {/* Status indicator */}
-                <div className="flex justify-end">
+                <div className="flex justify-end flex-shrink-0">
                   {isActive && !isSuccess && !isPassed && (
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-0.5 sm:gap-1">
                       <div className="relative">
-                        <div className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse" />
-                        <div className="absolute inset-0 w-1.5 h-1.5 bg-blue-400 rounded-full animate-ping" />
+                        <div className="w-1 sm:w-1.5 h-1 sm:h-1.5 bg-blue-400 rounded-full animate-pulse" />
+                        <div className="absolute inset-0 w-1 sm:w-1.5 h-1 sm:h-1.5 bg-blue-400 rounded-full animate-ping" />
                       </div>
-                      <span className="text-[10px] text-blue-400 animate-pulse">Checking...</span>
+                      <span className="text-[8px] sm:text-[10px] text-blue-400 animate-pulse hidden sm:inline">Checking...</span>
                     </div>
                   )}
                   {isSuccess && (
-                    <div className="flex items-center gap-1 animate-fadeIn">
-                      <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="flex items-center gap-0.5 sm:gap-1 animate-fadeIn">
+                      <svg className="w-3 sm:w-4 h-3 sm:h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-[10px] text-green-400">Found</span>
+                      <span className="text-[8px] sm:text-[10px] text-green-400 hidden sm:inline">Found</span>
                     </div>
                   )}
                   {isPassed && (
-                    <span className="text-[10px] text-slate-500 transition-opacity duration-300">Not found</span>
+                    <span className="text-[8px] sm:text-[10px] text-slate-500 transition-opacity duration-300 hidden sm:inline">Not found</span>
                   )}
                 </div>
               </div>
@@ -191,15 +191,15 @@ export default function WaterfallAnimation({ isActive, isPhone = false }) {
 
       {/* Result */}
       {showResult && (
-        <div className="mt-6 w-full max-w-md animate-fadeIn">
-          <div className="p-3 bg-green-500/5 border border-green-500/20 rounded-lg transition-all duration-500">
-            <div className="flex items-center justify-center gap-2">
-              <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="mt-3 sm:mt-6 w-full max-w-md animate-fadeIn">
+          <div className="p-2 sm:p-3 bg-green-500/5 border border-green-500/20 rounded-lg transition-all duration-500">
+            <div className="flex items-center justify-center gap-1 sm:gap-2 flex-wrap">
+              <svg className="w-3 sm:w-4 h-3 sm:h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
-              <span className="text-green-400 text-xs">{isPhone ? 'Phone found' : 'Email verified'}</span>
-              <span className="text-slate-400 text-xs">•</span>
-              <span className="text-slate-300 text-xs font-mono">
+              <span className="text-green-400 text-[10px] sm:text-xs">{isPhone ? 'Phone found' : 'Email verified'}</span>
+              <span className="text-slate-400 text-[10px] sm:text-xs">•</span>
+              <span className="text-slate-300 text-[10px] sm:text-xs font-mono truncate max-w-[150px] sm:max-w-none">
                 {isPhone ? SAMPLE_PHONES[leadIndex] : `${currentLead.name}@${currentLead.domain}`}
               </span>
             </div>
