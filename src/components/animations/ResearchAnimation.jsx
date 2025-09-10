@@ -436,7 +436,7 @@ export default function ResearchAnimation({ isActive = true }) {
     <div className="w-full h-full bg-white rounded-xl flex flex-col">
       {/* Table */}
       <div className="flex-1 overflow-x-auto overflow-y-auto relative">
-        <table className="w-full text-[10px] sm:text-[13px] min-w-[600px]">
+        <table className="w-full text-[10px] sm:text-[13px]">
           <thead className="bg-gray-50 border-b border-[#E9EDF2] sticky top-0 z-10">
             <tr className="h-8 sm:h-11">
               <th className="px-1 sm:px-2 text-left font-medium text-neutral-600 text-[8px] sm:text-[10px] uppercase tracking-wider">Company</th>
