@@ -15,6 +15,7 @@ const CREDIT_BUNDLES = [
 export default function PricingPage() {
   const [selectedBundle, setSelectedBundle] = useState(CREDIT_BUNDLES[0]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState('free'); // 'free' or 'pro' - for mobile toggle
   
   return (
     <main className="relative bg-white text-slate-900 pt-16">
@@ -36,7 +37,34 @@ export default function PricingPage() {
 
         {/* Plans */}
         <section className="mx-auto max-w-6xl px-6 pb-14">
-          <div className="grid gap-6 lg:grid-cols-2">
+          {/* Mobile toggle - visible only on small screens */}
+          <div className="flex justify-center mb-6 lg:hidden">
+            <div className="inline-flex rounded-full bg-slate-100 p-1">
+              <button
+                onClick={() => setSelectedPlan('free')}
+                className={`rounded-full px-6 py-2 text-sm font-medium transition-colors ${
+                  selectedPlan === 'free'
+                    ? 'bg-white text-slate-900 shadow-sm'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                Free
+              </button>
+              <button
+                onClick={() => setSelectedPlan('pro')}
+                className={`rounded-full px-6 py-2 text-sm font-medium transition-colors ${
+                  selectedPlan === 'pro'
+                    ? 'bg-white text-slate-900 shadow-sm'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                Pro
+              </button>
+            </div>
+          </div>
+
+          {/* Desktop - show both plans side by side */}
+          <div className="hidden lg:grid gap-6 lg:grid-cols-2">
             <PlanCard
               name="Free"
               price="$0"
@@ -54,6 +82,29 @@ export default function PricingPage() {
               dropdownOpen={dropdownOpen}
               setDropdownOpen={setDropdownOpen}
             />
+          </div>
+
+          {/* Mobile - show one plan at a time based on toggle */}
+          <div className="lg:hidden">
+            {selectedPlan === 'free' ? (
+              <PlanCard
+                name="Free"
+                price="$0"
+                badge="Get started"
+                highlight={false}
+                blurb="Great for kicking the tires and testing workflows."
+                includedCreditLabel="200 credits / mo"
+                ctaLabel="Start for free"
+              />
+            ) : (
+              <ProPlanCard
+                selectedBundle={selectedBundle}
+                setSelectedBundle={setSelectedBundle}
+                creditBundles={CREDIT_BUNDLES}
+                dropdownOpen={dropdownOpen}
+                setDropdownOpen={setDropdownOpen}
+              />
+            )}
           </div>
         </section>
 
