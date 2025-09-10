@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 
-export function LazyImage({ src, alt, className, ...props }) {
-  const [isLoaded, setIsLoaded] = useState(false);
+export function LazyImage({ src, alt, className, style, ...props }) {
   const [isInView, setIsInView] = useState(false);
   const imgRef = useRef(null);
 
   useEffect(() => {
+    if (!imgRef.current) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -19,9 +20,7 @@ export function LazyImage({ src, alt, className, ...props }) {
       }
     );
 
-    if (imgRef.current) {
-      observer.observe(imgRef.current);
-    }
+    observer.observe(imgRef.current);
 
     return () => {
       if (imgRef.current) {
@@ -30,20 +29,27 @@ export function LazyImage({ src, alt, className, ...props }) {
     };
   }, []);
 
+  if (!isInView) {
+    return (
+      <div 
+        ref={imgRef} 
+        className={className}
+        style={{ ...style, backgroundColor: '#f1f5f9' }}
+      />
+    );
+  }
+
   return (
-    <div ref={imgRef} className={`${className} ${!isLoaded ? 'bg-slate-100 animate-pulse' : ''}`}>
-      {isInView && (
-        <img
-          src={src}
-          alt={alt}
-          className={className}
-          onLoad={() => setIsLoaded(true)}
-          loading="lazy"
-          decoding="async"
-          {...props}
-        />
-      )}
-    </div>
+    <img
+      ref={imgRef}
+      src={src}
+      alt={alt}
+      className={className}
+      style={style}
+      loading="lazy"
+      decoding="async"
+      {...props}
+    />
   );
 }
 
@@ -53,6 +59,8 @@ export function LazyVideo({ src, className, autoPlay = true, muted = true, loop 
   const containerRef = useRef(null);
 
   useEffect(() => {
+    if (!containerRef.current) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -72,9 +80,7 @@ export function LazyVideo({ src, className, autoPlay = true, muted = true, loop 
       }
     );
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
+    observer.observe(containerRef.current);
 
     return () => {
       if (containerRef.current) {
@@ -83,20 +89,20 @@ export function LazyVideo({ src, className, autoPlay = true, muted = true, loop 
     };
   }, [autoPlay]);
 
+  if (!isInView) {
+    return <div ref={containerRef} className={className} />;
+  }
+
   return (
-    <div ref={containerRef} className={className}>
-      {isInView && (
-        <video
-          ref={videoRef}
-          src={src}
-          className={className}
-          autoPlay={autoPlay}
-          muted={muted}
-          loop={loop}
-          playsInline={playsInline}
-          {...props}
-        />
-      )}
-    </div>
+    <video
+      ref={videoRef}
+      src={src}
+      className={className}
+      autoPlay={autoPlay}
+      muted={muted}
+      loop={loop}
+      playsInline={playsInline}
+      {...props}
+    />
   );
 }
