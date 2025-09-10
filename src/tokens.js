@@ -1,7 +1,7 @@
 export const tokens = {
   "brand": { 
     "name": "Autotouch AI", 
-    "logoSrc": "/logo_2.svg" 
+    "logoSrc": "/main_logo_sm.jpg" 
   },
   "font": { 
     "family": "Inter, ui-sans-serif, system-ui" 
