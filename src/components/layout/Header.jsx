@@ -21,7 +21,7 @@ export default function Header() {
   };
 
   const headerContainerClass = isScrolled
-    ? 'fixed top-0 left-1/2 -translate-x-1/2 z-40 transition-all duration-500 ease-out bg-white/80 backdrop-blur-md shadow-lg rounded-full mt-3 w-[720px]'
+    ? 'fixed top-0 left-1/2 -translate-x-1/2 z-40 transition-all duration-500 ease-out bg-white/80 backdrop-blur-md shadow-lg md:rounded-full md:mt-3 md:w-[720px] w-full'
     : 'fixed top-0 left-1/2 -translate-x-1/2 z-40 transition-all duration-500 ease-out w-full max-w-none';
 
   const ctaClass = isScrolled
@@ -49,7 +49,7 @@ export default function Header() {
                 <img 
                   src={tokens.brand.logoSrc} 
                   alt={tokens.brand.name}
-                  className="h-14 w-auto"
+                  className={`${isScrolled ? 'h-10 md:h-12' : 'h-14'} w-auto transition-all duration-300`}
                   loading="eager"
                   decoding="async"
                   style={{ 
