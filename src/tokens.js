@@ -53,7 +53,7 @@ export const tokens = {
         "id": "research", 
         "label": "Research", 
         "title": "Prioritize your best accounts", 
-        "asset": "/assets/videos/research.mp4" 
+        "asset": "/assets/videos/enrich.mp4" 
       },
       { 
         "id": "personalize", 
