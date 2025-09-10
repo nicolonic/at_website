@@ -89,7 +89,7 @@ export default function Header() {
               </a>
               <a 
                 href={tokens.hero.primaryCta.href}
-                className={`px-4 py-2 rounded-pill text-sm font-medium transition-all duration-200 min-h-[44px] flex items-center ${ctaClass}`}
+                className={`px-4 py-2 rounded-pill text-sm font-medium transition-all duration-200 min-h-[44px] flex items-center whitespace-nowrap ${ctaClass}`}
               >
                 {tokens.hero.primaryCta.label}
               </a>
