@@ -63,13 +63,13 @@ export default function KeyFeatures() {
 
         {/* Tab Navigation */}
         <div className="flex justify-center mb-12">
-          <div className="inline-flex gap-2">
+          <div className="flex gap-2 w-full sm:w-auto max-w-lg sm:max-w-none">
             {features.map((feature) => (
               <button
                 key={feature.id}
                 onClick={() => setSelectedFeature(feature.id)}
                 className={`
-                  px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200
+                  px-4 sm:px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 flex-1 sm:flex-initial sm:min-w-[140px]
                   ${selectedFeature === feature.id 
                     ? 'bg-slate-100 text-slate-900 border border-slate-200' 
                     : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
