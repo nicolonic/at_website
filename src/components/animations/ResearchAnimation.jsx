@@ -435,57 +435,58 @@ export default function ResearchAnimation({ isActive = true }) {
   return (
     <div className="w-full h-full bg-white rounded-xl flex flex-col">
       {/* Table */}
-      <div className="flex-1 overflow-y-auto relative">
-        <table className="w-full text-[13px] table-fixed">
+      <div className="flex-1 overflow-x-auto overflow-y-auto relative">
+        <table className="w-full text-[10px] sm:text-[13px] min-w-[600px]">
           <thead className="bg-gray-50 border-b border-[#E9EDF2] sticky top-0 z-10">
-            <tr className="h-11">
-              <th className="px-2 text-left font-medium text-neutral-600 text-[10px] uppercase tracking-wider w-[14%]">Company</th>
-              <th className="px-2 text-left font-medium text-neutral-600 text-[10px] uppercase tracking-wider w-[6%]">ICP</th>
-              <th className="px-2 text-left font-medium text-neutral-600 text-[10px] uppercase tracking-wider w-[13%]">
+            <tr className="h-8 sm:h-11">
+              <th className="px-1 sm:px-2 text-left font-medium text-neutral-600 text-[8px] sm:text-[10px] uppercase tracking-wider">Company</th>
+              <th className="px-1 sm:px-2 text-left font-medium text-neutral-600 text-[8px] sm:text-[10px] uppercase tracking-wider hidden sm:table-cell">ICP</th>
+              <th className="px-1 sm:px-2 text-left font-medium text-neutral-600 text-[8px] sm:text-[10px] uppercase tracking-wider">
                 <div className="flex items-center">
                   <span>Domain</span>
                   {phase !== PHASES.IDLE && (
-                    <span className="ml-1 text-[9px] text-neutral-400 font-normal">
+                    <span className="ml-1 text-[7px] sm:text-[9px] text-neutral-400 font-normal">
                       {domainsFound}/{initialCompanies.length}
                     </span>
                   )}
                 </div>
               </th>
-              <th className="px-2 text-left font-medium text-neutral-600 text-[10px] uppercase tracking-wider w-[24%]">
+              <th className="px-1 sm:px-2 text-left font-medium text-neutral-600 text-[8px] sm:text-[10px] uppercase tracking-wider hidden md:table-cell">
                 <div className="flex items-center">
                   <span>Description</span>
                   {(phase !== PHASES.IDLE && phase !== PHASES.FINDING_DOMAINS) && (
-                    <span className="ml-1 text-[9px] text-neutral-400 font-normal">
+                    <span className="ml-1 text-[7px] sm:text-[9px] text-neutral-400 font-normal">
                       {descriptionsFound}/{totalICP}
                     </span>
                   )}
                 </div>
               </th>
-              <th className="px-2 text-left font-medium text-neutral-600 text-[10px] uppercase tracking-wider w-[10%]">
+              <th className="px-1 sm:px-2 text-left font-medium text-neutral-600 text-[8px] sm:text-[10px] uppercase tracking-wider">
                 <div className="flex items-center">
                   <span>Size</span>
                   {(phase === PHASES.FINDING_SIZE || phase === PHASES.FINDING_NEWS || phase === PHASES.CALCULATING_PRIORITY || phase === PHASES.DONE) && (
-                    <span className="ml-1 text-[9px] text-neutral-400 font-normal">
+                    <span className="ml-1 text-[7px] sm:text-[9px] text-neutral-400 font-normal">
                       {companySizesFound}/{totalICP}
                     </span>
                   )}
                 </div>
               </th>
-              <th className="px-2 text-left font-medium text-neutral-600 text-[10px] uppercase tracking-wider w-[20%]">
+              <th className="px-1 sm:px-2 text-left font-medium text-neutral-600 text-[8px] sm:text-[10px] uppercase tracking-wider">
                 <div className="flex items-center">
-                  <span>Recent News</span>
+                  <span className="hidden sm:inline">Recent News</span>
+                  <span className="sm:hidden">News</span>
                   {(phase === PHASES.FINDING_NEWS || phase === PHASES.CALCULATING_PRIORITY || phase === PHASES.DONE) && (
-                    <span className="ml-1 text-[9px] text-neutral-400 font-normal">
+                    <span className="ml-1 text-[7px] sm:text-[9px] text-neutral-400 font-normal">
                       {newsFound}/{totalICP}
                     </span>
                   )}
                 </div>
               </th>
-              <th className="px-2 text-left font-medium text-neutral-600 text-[10px] uppercase tracking-wider w-[13%]">
+              <th className="px-1 sm:px-2 text-left font-medium text-neutral-600 text-[8px] sm:text-[10px] uppercase tracking-wider">
                 <div className="flex items-center">
                   <span>Priority</span>
                   {(phase === PHASES.CALCULATING_PRIORITY || phase === PHASES.DONE) && (
-                    <span className="ml-1 text-[9px] text-neutral-400 font-normal">
+                    <span className="ml-1 text-[7px] sm:text-[9px] text-neutral-400 font-normal">
                       {prioritiesCalculated}/{totalICP}
                     </span>
                   )}
@@ -495,34 +496,34 @@ export default function ResearchAnimation({ isActive = true }) {
           </thead>
           <tbody>
             {companies.slice(0, 8).map((company) => (
-              <tr key={company.id} className="border-b border-[#E9EDF2] hover:bg-gray-50/50 transition-colors h-11">
-                <td className="px-2 text-neutral-700 font-medium text-[12px]">
+              <tr key={company.id} className="border-b border-[#E9EDF2] hover:bg-gray-50/50 transition-colors h-8 sm:h-11">
+                <td className="px-1 sm:px-2 text-neutral-700 font-medium text-[10px] sm:text-[12px]">
                   {company.name}
                 </td>
-                <td className="px-2">
-                  <span className={`inline-flex items-center h-4 px-1.5 rounded text-[10px] font-medium ${
+                <td className="px-1 sm:px-2 hidden sm:table-cell">
+                  <span className={`inline-flex items-center h-3 sm:h-4 px-1 sm:px-1.5 rounded text-[8px] sm:text-[10px] font-medium ${
                     company.icpStatus 
                       ? 'bg-teal-50/60 text-teal-600' 
                       : 'bg-gray-50 text-gray-500'
                   }`}>
-                    {company.icpStatus ? '✓ True' : 'False'}
+                    {company.icpStatus ? '✓' : '—'}
                   </span>
                 </td>
-                <td className={`px-2 text-gray-600 text-[11px] transition-all duration-200 ${
+                <td className={`px-1 sm:px-2 text-gray-600 text-[9px] sm:text-[11px] transition-all duration-200 ${
                   company.highlighted.domain ? 'bg-blue-50/40' : ''
                 }`}>
                   {!company.revealed.domain ? (
-                    <div className="h-2 bg-gray-200 rounded w-16 animate-pulse opacity-40"></div>
+                    <div className="h-1.5 sm:h-2 bg-gray-200 rounded w-12 sm:w-16 animate-pulse opacity-40"></div>
                   ) : (
-                    <span className="text-blue-600">{company.domain}</span>
+                    <span className="text-blue-600 truncate block">{company.domain}</span>
                   )}
                 </td>
-                <td className={`px-2 text-gray-700 text-[10px] transition-all duration-200 ${
+                <td className={`px-1 sm:px-2 text-gray-700 text-[8px] sm:text-[10px] transition-all duration-200 hidden md:table-cell ${
                   company.highlighted.description ? 'bg-blue-50/40' : ''
                 }`}>
                   {!company.revealed.description ? (
                     company.icpStatus ? (
-                      <div className="h-2 bg-gray-200 rounded w-32 animate-pulse opacity-40"></div>
+                      <div className="h-1.5 sm:h-2 bg-gray-200 rounded w-20 sm:w-32 animate-pulse opacity-40"></div>
                     ) : (
                       <span className="text-gray-400">—</span>
                     )
@@ -532,12 +533,12 @@ export default function ResearchAnimation({ isActive = true }) {
                     </div>
                   )}
                 </td>
-                <td className={`px-2 text-gray-700 text-[11px] font-medium transition-all duration-200 ${
+                <td className={`px-1 sm:px-2 text-gray-700 text-[9px] sm:text-[11px] font-medium transition-all duration-200 ${
                   company.highlighted.companySize ? 'bg-blue-50/40' : ''
                 }`}>
                   {!company.revealed.companySize ? (
                     company.icpStatus ? (
-                      <div className="h-2 bg-gray-200 rounded w-14 animate-pulse opacity-40"></div>
+                      <div className="h-1.5 sm:h-2 bg-gray-200 rounded w-10 sm:w-14 animate-pulse opacity-40"></div>
                     ) : (
                       <span className="text-gray-400">—</span>
                     )
@@ -547,12 +548,12 @@ export default function ResearchAnimation({ isActive = true }) {
                     </span>
                   )}
                 </td>
-                <td className={`px-2 text-[10px] transition-all duration-200 ${
+                <td className={`px-1 sm:px-2 text-[8px] sm:text-[10px] transition-all duration-200 ${
                   company.highlighted.news ? 'bg-blue-50/40' : ''
                 }`}>
                   {!company.revealed.news ? (
                     company.icpStatus ? (
-                      <div className="h-2 bg-gray-200 rounded w-24 animate-pulse opacity-40"></div>
+                      <div className="h-1.5 sm:h-2 bg-gray-200 rounded w-16 sm:w-24 animate-pulse opacity-40"></div>
                     ) : (
                       <span className="text-gray-400">—</span>
                     )
@@ -562,19 +563,19 @@ export default function ResearchAnimation({ isActive = true }) {
                     </span>
                   )}
                 </td>
-                <td className={`px-2 transition-all duration-200 ${
+                <td className={`px-1 sm:px-2 transition-all duration-200 ${
                   company.highlighted.priority ? 'bg-yellow-50/60' : ''
                 }`}>
                   {!company.revealed.priority ? (
                     company.icpStatus ? (
-                      <div className="h-5 bg-gray-200 rounded-full w-16 animate-pulse opacity-40"></div>
+                      <div className="h-3 sm:h-5 bg-gray-200 rounded-full w-12 sm:w-16 animate-pulse opacity-40"></div>
                     ) : (
                       <span className="text-gray-400">—</span>
                     )
                   ) : (
                     company.priority ? (
-                      <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold ${company.priority.color}`}>
-                        <span>{company.priority.icon}</span>
+                      <span className={`inline-flex items-center gap-0.5 sm:gap-1 px-1 sm:px-2 py-0.5 rounded-full text-[8px] sm:text-[10px] font-semibold ${company.priority.color}`}>
+                        <span className="hidden sm:inline">{company.priority.icon}</span>
                         <span>{company.priority.label}</span>
                       </span>
                     ) : (
