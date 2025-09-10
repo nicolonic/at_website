@@ -4,6 +4,7 @@ import { tokens } from '../../tokens.js';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
@@ -15,6 +16,24 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
 
   const headerStyle = {
     height: isScrolled ? `${tokens.header.heightScrolled}px` : `${tokens.header.heightStart}px`,
@@ -96,17 +115,123 @@ export default function Header() {
 
               <button 
                 className="md:hidden p-2 text-slate-600 hover:text-slate-900 min-h-[44px] min-w-[44px]"
-                aria-label="Open menu"
-                aria-expanded="false"
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isMobileMenuOpen}
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
+                {isMobileMenuOpen ? (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                ) : (
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                )}
               </button>
             </div>
           </div>
         </div>
       </header>
+
+      {/* Mobile Menu */}
+      <div 
+        className={`fixed inset-0 z-30 md:hidden transition-opacity duration-300 ${
+          isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        {/* Backdrop */}
+        <div 
+          className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+        
+        {/* Menu Panel */}
+        <div 
+          className={`absolute right-0 top-0 h-full w-full max-w-sm bg-white shadow-xl transform transition-transform duration-300 ease-out ${
+            isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          <div className="flex flex-col h-full">
+            {/* Menu Header */}
+            <div className="flex items-center justify-between p-4 border-b border-slate-200">
+              <Link 
+                to="/" 
+                className="flex items-center"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <img 
+                  src={tokens.brand.logoSrc} 
+                  alt={tokens.brand.name}
+                  className="h-10 w-auto"
+                />
+              </Link>
+              <button 
+                className="p-2 text-slate-600 hover:text-slate-900"
+                aria-label="Close menu"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            {/* Menu Items */}
+            <nav className="flex-1 px-4 py-6 space-y-1">
+              {isHomePage ? (
+                <a 
+                  href="#key-features" 
+                  className="block px-3 py-2 text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Features
+                </a>
+              ) : (
+                <Link 
+                  to="/#key-features" 
+                  className="block px-3 py-2 text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Features
+                </Link>
+              )}
+              <Link 
+                to="/pricing" 
+                className="block px-3 py-2 text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Pricing
+              </Link>
+              <a 
+                href="https://www.autotouch.ai/blog" 
+                className="block px-3 py-2 text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Blog
+              </a>
+            </nav>
+            
+            {/* Menu Footer */}
+            <div className="p-4 border-t border-slate-200 space-y-3">
+              <a 
+                href="https://app.autotouch.ai/signin" 
+                className="block w-full text-center px-4 py-2 border border-slate-300 text-slate-700 rounded-pill text-base font-medium hover:bg-slate-50 transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Sign in
+              </a>
+              <a 
+                href={tokens.hero.primaryCta.href}
+                className="block w-full text-center px-4 py-2 bg-brand-primary text-white rounded-pill text-base font-medium hover:bg-blue-600 transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {tokens.hero.primaryCta.label}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
