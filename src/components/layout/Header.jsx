@@ -26,7 +26,7 @@ export default function Header() {
 
   const ctaClass = isScrolled
     ? 'bg-brand-primary text-white hover:bg-blue-600'
-    : 'border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white';
+    : 'bg-brand-primary text-white hover:bg-blue-600';
 
   return (
     <>
