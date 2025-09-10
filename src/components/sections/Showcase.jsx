@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { tokens } from '../../tokens.js';
 import SegmentedProgress from '../animations/SegmentedProgress';
-import { LazyVideo } from '../shared/LazyMedia.jsx';
 
 const STATES = {
   AUTOPLAYING: 'autoplaying',
@@ -180,15 +179,22 @@ export default function Showcase() {
                 <div className="aspect-video bg-gradient-to-br from-slate-50 to-white rounded-2xl overflow-hidden shadow-xl">
                   {/* Show video for each tab */}
                   {tab.asset ? (
-                    <LazyVideo 
-                      src={tab.asset}
+                    <video 
                       className="w-full h-full object-cover"
                       autoPlay={currentTab === index}
                       muted
                       loop
                       playsInline
                       key={`${tab.id}-${currentTab === index}`}
-                    />
+                    >
+                      <source src={tab.asset} type="video/mp4" />
+                      <div className="w-full h-full flex items-center justify-center">
+                        <div className="text-center">
+                          <div className="w-20 h-20 bg-slate-200 rounded-2xl mx-auto mb-4"></div>
+                          <span className="text-slate-500 text-lg font-medium">Video unavailable</span>
+                        </div>
+                      </div>
+                    </video>
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
                       <div className="text-center">
