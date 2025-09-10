@@ -134,11 +134,11 @@ export default function IntegrationsAnimation({ isActive = true }) {
           </div>
 
           {/* Integration categories */}
-          <div className="p-2 sm:p-6">
+          <div className="pt-4 px-2 pb-2 sm:p-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
               
               {/* Email Clients */}
-              <div className="mt-2 sm:mt-0">
+              <div>
                 <div className="text-xs font-medium text-slate-500 mb-2 sm:mb-3 uppercase tracking-wider">Email Clients</div>
                 <div className="space-y-1 sm:space-y-2">
                   {Object.entries(INTEGRATIONS)
