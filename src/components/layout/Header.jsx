@@ -40,8 +40,8 @@ export default function Header() {
   };
 
   const headerContainerClass = isScrolled
-    ? 'fixed top-0 left-1/2 -translate-x-1/2 z-40 transition-all duration-500 ease-out bg-white/80 backdrop-blur-md shadow-lg md:rounded-full md:mt-3 md:w-[720px] w-full'
-    : 'fixed top-0 left-1/2 -translate-x-1/2 z-40 transition-all duration-500 ease-out w-full max-w-none';
+    ? 'fixed top-0 left-1/2 -translate-x-1/2 z-30 transition-all duration-500 ease-out bg-white/80 backdrop-blur-md shadow-lg md:rounded-full md:mt-3 md:w-[720px] w-full'
+    : 'fixed top-0 left-1/2 -translate-x-1/2 z-30 transition-all duration-500 ease-out w-full max-w-none';
 
   const ctaClass = isScrolled
     ? 'bg-brand-primary text-white hover:bg-blue-600'
@@ -57,7 +57,7 @@ export default function Header() {
       </a>
       
       <header 
-        className={headerContainerClass}
+        className={`${headerContainerClass} ${isMobileMenuOpen ? 'md:block hidden' : 'block'}`}
         style={headerStyle}
       >
         <div className={`${isScrolled ? 'px-4 w-full' : 'max-w-7xl px-4 sm:px-6 lg:px-8'} mx-auto h-full transition-all duration-300`}>
@@ -136,7 +136,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       <div 
-        className={`fixed inset-0 z-50 md:hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 z-[100] md:hidden transition-opacity duration-300 ${
           isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
@@ -148,7 +148,7 @@ export default function Header() {
         
         {/* Menu Panel */}
         <div 
-          className={`absolute right-0 top-0 h-full w-full max-w-sm bg-white shadow-xl transform transition-transform duration-300 ease-out ${
+          className={`absolute right-0 top-0 h-full w-full bg-white shadow-xl transform transition-transform duration-300 ease-out ${
             isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
