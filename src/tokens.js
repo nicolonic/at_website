@@ -47,7 +47,7 @@ export const tokens = {
         "id": "build", 
         "label": "Build lists", 
         "title": "Find the right accounts", 
-        "asset": "/assets/videos/build.mp4" 
+        "asset": "/assets/videos/list_build.mp4" 
       },
       { 
         "id": "research", 
