@@ -1,0 +1,17 @@
+[[redirects]]
+  from = "/blog/*"
+  to = "https://www.autotouch.ai/blog/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/future-of-sales/*"
+  to = "https://www.autotouch.ai/future-of-sales/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/post/*"
+  to = "https://www.autotouch.ai/post/:splat"
+  status = 200
+  force = true

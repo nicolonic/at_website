@@ -1,0 +1,4 @@
+# Proxy blog and content paths to Webflow
+/blog/*  https://www.autotouch.ai/blog/:splat  200
+/future-of-sales/*  https://www.autotouch.ai/future-of-sales/:splat  200
+/post/*  https://www.autotouch.ai/post/:splat  200

@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-sans antialiased;
+  }
+  
+  * {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2;
+  }
+}
+
+@layer components {
+  .gradient-tint {
+    background: linear-gradient(135deg, 
+      rgba(255, 217, 232, 0.6) 0%,
+      rgba(227, 242, 255, 0.6) 50%,
+      rgba(232, 255, 233, 0.6) 100%),
+      #ffffff;
+  }
+  
+  .grain-texture::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(0,0,0,0.05) 1px, transparent 0);
+    background-size: 20px 20px;
+    opacity: 0.5;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+  }
+  
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+  
+  
+  .quote-reveal {
+    color: #64748b;
+    opacity: 0.6;
+    transform: translateY(16px);
+    transition: all 0.6s ease-out;
+  }
+  
+  .quote-reveal.revealed {
+    color: #0f172a;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .quote-reveal {
+      transform: none;
+      transition: color 0.2s ease-out, opacity 0.2s ease-out;
+    }
+    
+    .quote-reveal.revealed {
+      transform: none;
+    }
+  }
+  
+  .progress-bar {
+    width: 100%;
+    height: 2px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 1px;
+    overflow: hidden;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background: #6d7cff;
+    border-radius: 1px;
+    transition: width 30ms linear;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .progress-fill {
+      transition: none;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  @keyframes blob {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  }
+  
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+}

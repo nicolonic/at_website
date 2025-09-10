@@ -1,0 +1,117 @@
+export const tokens = {
+  "brand": { 
+    "name": "Autotouch AI", 
+    "logoSrc": "/logo_2.svg" 
+  },
+  "font": { 
+    "family": "Inter, ui-sans-serif, system-ui" 
+  },
+  "colors": {
+    "bg": "#ffffff",
+    "fg": "#0f172a",
+    "muted": "#64748b",
+    "primary": "#6d7cff",
+    "chipBg": "#f1f5f9",
+    "chipBorder": "#e2e8f0",
+    "tintA": "#ffd9e8",
+    "tintB": "#e3f2ff",
+    "tintC": "#e8ffe9",
+    "tintOpacity": 0.6
+  },
+  "radii": { 
+    "xl": "1rem", 
+    "pill": "9999px" 
+  },
+  "shadow": {
+    "elevated": "0 6px 24px -8px rgba(15,23,42,.18)",
+    "subtle": "0 1px 2px rgba(0,0,0,.06)"
+  },
+  "header": {
+    "heightStart": 80,
+    "heightScrolled": 56,
+    "opacityStart": 0.0,
+    "opacityScrolled": 0.85,
+    "blur": 12,
+    "scrollThreshold": 48
+  },
+  "hero": {
+    "chipText": "Built by GTM and Sales Experts",
+    "title": "Pipeline, engineered",
+    "subtitle": "Run your most ambitious GTM plays in one system",
+    "primaryCta": { "label": "Start for free", "href": "/start-free-trial" },
+    "secondaryCta": { "label": "Talk to sales", "href": "/talk-to-sales" }
+  },
+  "showcase": {
+    "tabs": [
+      { 
+        "id": "build", 
+        "label": "Build lists", 
+        "title": "Find the right accounts", 
+        "asset": "/assets/videos/build.mp4" 
+      },
+      { 
+        "id": "research", 
+        "label": "Research", 
+        "title": "Prioritize your best accounts", 
+        "asset": "/assets/videos/research.mp4" 
+      },
+      { 
+        "id": "personalize", 
+        "label": "Personalize", 
+        "title": "Contextual outreach in minutes", 
+        "asset": "/assets/videos/personalize.mp4" 
+      },
+      { 
+        "id": "engage", 
+        "label": "Engage", 
+        "title": "Multichannel follow-up that lands", 
+        "asset": "/assets/videos/engage.mp4" 
+      }
+    ],
+    "autoplay": { 
+      "enabled": true, 
+      "perTabMs": 4500, 
+      "progressUpdateMs": 30 
+    }
+  },
+  "logos": [
+    { "src": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg", "alt": "Google" },
+    { "src": "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg", "alt": "Microsoft" },
+    { "src": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg", "alt": "Amazon" },
+    { "src": "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg", "alt": "Microsoft" },
+    { "src": "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg", "alt": "Netflix" },
+    { "src": "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg", "alt": "IBM" }
+  ],
+  "quote": {
+    "text": "My SDRs were productive in 10 minutes, not 10 weeks. When we needed help with our outbound strategy, we got advice from people who've actually carried quotas.",
+    "author": "Margaret Chen",
+    "role": "Head of Business Operations · Modal"
+  },
+  "features": [
+    { 
+      "kicker": "[01] POWERFUL PLATFORM", 
+      "title": "GTM at full throttle.", 
+      "body": "Streamline your entire go-to-market process with AI-powered workflows, seamless integrations, and real-time reporting that keeps your team aligned and moving fast." 
+    },
+    { 
+      "kicker": "[02] AUTOMATION", 
+      "title": "Automate everything.", 
+      "body": "Set up intelligent triggers and automated hand-offs that eliminate manual work, so your team can focus on building relationships and closing deals." 
+    },
+    { 
+      "kicker": "[03] INSIGHTS", 
+      "title": "Reporting that guides action.", 
+      "body": "Get actionable insights with customizable dashboards and health scores that help you understand what's working and where to focus next." 
+    },
+    { 
+      "kicker": "[04] EXECUTION", 
+      "title": "Move deals faster.", 
+      "body": "Accelerate your sales cycle with automated sequences, smart task management, and integrated communication tools that keep prospects engaged." 
+    }
+  ],
+  "trialCta": {
+    "title": "Start with a 14-day free trial.",
+    "primary": { "label": "Start for free", "href": "/start-free-trial" },
+    "secondary": { "label": "See plans", "href": "https://autotouch.ai/pricing" }
+  }
+};

@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/blog/:path*",
+      "destination": "https://www.autotouch.ai/blog/:path*"
+    },
+    {
+      "source": "/future-of-sales/:path*",
+      "destination": "https://www.autotouch.ai/future-of-sales/:path*"
+    },
+    {
+      "source": "/post/:path*",
+      "destination": "https://www.autotouch.ai/post/:path*"
+    }
+  ]
+}
