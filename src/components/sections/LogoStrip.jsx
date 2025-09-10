@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { tokens } from '../../tokens.js';
+import { LazyImage } from '../shared/LazyMedia.jsx';
 
 function LogoImage({ logo }) {
   const [imgSrc, setImgSrc] = useState(logo.src);
@@ -26,11 +27,10 @@ function LogoImage({ logo }) {
   }
 
   return (
-    <img
+    <LazyImage
       src={imgSrc}
       alt={logo.alt}
       className="max-h-full w-auto max-w-[120px] sm:max-w-[100px] object-contain filter grayscale opacity-60 hover:opacity-90 hover:grayscale-0 transition-all duration-300"
-      loading="lazy"
       style={{
         filter: 'grayscale(100%) contrast(0.9)',
         mixBlendMode: 'multiply'
