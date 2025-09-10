@@ -195,7 +195,7 @@ function ChapterSection({ chapter, index }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Copy - order changes based on chapter */}
           <div className={`${copyColClass} space-y-4`}>
-            <span className="inline-flex items-center justify-center min-w-[140px] px-3 py-1.5 rounded-full text-xs font-medium bg-white border border-slate-200 text-slate-600">
+            <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-white border border-slate-200 text-slate-600">
               {chapter.number} • {chapter.label}
             </span>
             
