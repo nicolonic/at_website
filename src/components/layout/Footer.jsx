@@ -18,7 +18,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-slate-400 text-sm leading-relaxed">
-              The AI-native workspace that transforms how GTM teams build relationships and drive growth.
+              Run your most ambitious GTM plays in one system. Built by GTM and Sales Experts.
             </p>
           </div>
 
