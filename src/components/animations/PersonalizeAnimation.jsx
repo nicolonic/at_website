@@ -39,7 +39,6 @@ const SOURCE_COLORS = {
 // Input data that flows through the pipeline
 const inputData = {
   company: {
-    step: '01',
     title: 'Your company',
     items: [
       'Helped 218 teams',
@@ -49,7 +48,6 @@ const inputData = {
     ]
   },
   research: {
-    step: '02',
     title: 'Lead research',
     items: [
       'AE job post',
@@ -59,7 +57,6 @@ const inputData = {
     ]
   },
   examples: {
-    step: '03',
     title: 'Your examples',
     items: [
       'Hey {{name}} - saw you...',
@@ -214,7 +211,7 @@ export default function PersonalizeAnimation({ isActive = true }) {
   }, [isActive]);
 
   return (
-    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-white to-slate-50 p-2 relative overflow-hidden">
+    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-white to-slate-50 p-1 sm:p-2 relative overflow-hidden">
       {/* Subtle background dots */}
       <div 
         className="absolute inset-0 opacity-[0.03]"
@@ -226,59 +223,69 @@ export default function PersonalizeAnimation({ isActive = true }) {
       
       <div className="w-full max-w-5xl relative z-10">
         {/* Step chips at top */}
-        <div className="flex justify-center gap-2 mb-3">
+        <div className="flex justify-center gap-1 sm:gap-2 mb-2 sm:mb-3">
           {Object.entries(inputData).map(([key, data]) => (
             <div 
               key={key}
               className={`
-                px-2 py-1 rounded-full text-[10px] font-medium transition-all duration-300
+                px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full text-[8px] sm:text-[10px] font-medium transition-all duration-300
                 ${activeSource === key 
                   ? `${SOURCE_COLORS[key].bg} ${SOURCE_COLORS[key].border} ${SOURCE_COLORS[key].text} border shadow-md` 
                   : 'bg-white border border-slate-200 text-slate-500'
                 }
               `}
             >
-              <span className="opacity-50">{data.step}</span> {data.title}
+              {data.title}
             </div>
           ))}
         </div>
 
         {/* Three input cards */}
-        <div className="grid grid-cols-3 gap-3 mb-4">
+        <div className="grid grid-cols-3 gap-1 sm:gap-3 mb-2 sm:mb-4">
           {Object.entries(inputData).map(([key, data]) => (
             <div 
               key={key}
               className={`
-                relative rounded-lg border p-2 transition-all duration-300
+                relative rounded-lg border p-1 sm:p-2 transition-all duration-300
                 ${activeSource === key 
-                  ? `${SOURCE_COLORS[key].bg} ${SOURCE_COLORS[key].border} shadow-lg scale-105` 
+                  ? `${SOURCE_COLORS[key].bg} ${SOURCE_COLORS[key].border} shadow-lg sm:scale-105` 
                   : 'bg-white border-slate-200'
                 }
               `}
             >
-              <h3 className={`text-[10px] font-semibold mb-1 ${
+              <h3 className={`text-[8px] sm:text-[10px] font-semibold mb-0.5 sm:mb-1 ${
                 activeSource === key ? SOURCE_COLORS[key].text : 'text-slate-600'
               }`}>
                 {data.title}
               </h3>
               <ul className="space-y-0.5">
-                {data.items.map((item, i) => (
+                {data.items.slice(0, 2).map((item, i) => (
                   <li 
                     key={i} 
-                    className={`text-[10px] leading-tight ${
+                    className={`text-[7px] sm:text-[10px] leading-tight truncate ${
                       activeSource === key ? SOURCE_COLORS[key].text : 'text-slate-500'
                     }`}
                   >
-                    • {item}
+                    <span className="hidden sm:inline">• </span>{item}
                   </li>
                 ))}
+                <li className={`text-[7px] sm:text-[10px] hidden sm:list-item ${
+                  activeSource === key ? SOURCE_COLORS[key].text : 'text-slate-500'
+                }`}>
+                  • {data.items[2]}
+                </li>
+                <li className={`text-[7px] sm:text-[10px] hidden sm:list-item ${
+                  activeSource === key ? SOURCE_COLORS[key].text : 'text-slate-500'
+                }`}>
+                  • {data.items[3]}
+                </li>
               </ul>
             </div>
           ))}
         </div>
 
         {/* AI Node with flowing ribbons */}
-        <div className="relative h-16 mb-4">
+        <div className="relative h-12 sm:h-16 mb-2 sm:mb-4">
           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 64">
             {/* Ribbons flowing from cards to AI */}
             <defs>
@@ -345,56 +352,60 @@ export default function PersonalizeAnimation({ isActive = true }) {
           {/* AI Node */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <div className={`
-              w-10 h-10 rounded-full bg-white border-2 shadow-lg flex items-center justify-center
+              w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white border-2 shadow-lg flex items-center justify-center
               ${phase === PHASES.PROCESSING ? 'border-brand-primary animate-pulse' : 'border-slate-300'}
             `}>
               {phase === PHASES.PROCESSING ? (
-                <div className="w-4 h-4 border-2 border-brand-primary border-t-transparent rounded-full animate-spin" />
+                <div className="w-3 h-3 sm:w-4 sm:h-4 border-2 border-brand-primary border-t-transparent rounded-full animate-spin" />
               ) : (
-                <span className="text-[10px] font-bold text-slate-700">AI</span>
+                <span className="text-[8px] sm:text-[10px] font-bold text-slate-700">AI</span>
               )}
             </div>
           </div>
         </div>
 
         {/* Generated Email */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-lg p-4" style={{ boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.04), 0 10px 40px rgba(0,0,0,0.08)' }}>
-          <div className="flex items-center justify-between mb-2">
-            <h3 className="text-xs font-semibold text-slate-700">
+        <div className="bg-white rounded-xl border border-slate-200 shadow-lg p-2 sm:p-4" style={{ boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.04), 0 10px 40px rgba(0,0,0,0.08)' }}>
+          <div className="flex items-center justify-between mb-1 sm:mb-2">
+            <h3 className="text-[10px] sm:text-xs font-semibold text-slate-700">
               Generated draft
             </h3>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 sm:gap-2">
               <button
-                className="text-[10px] text-slate-400 hover:text-slate-600 transition-colors"
+                className="text-[8px] sm:text-[10px] text-slate-400 hover:text-slate-600 transition-colors hidden sm:inline"
               >
                 Copy draft
               </button>
               <button
                 onClick={() => setShowSources(!showSources)}
-                className="text-[10px] text-slate-500 hover:text-slate-700 transition-colors font-medium"
+                className="text-[8px] sm:text-[10px] text-slate-500 hover:text-slate-700 transition-colors font-medium"
               >
-                {showSources ? 'Hide' : 'Show'} how this was written
+                <span className="hidden sm:inline">{showSources ? 'Hide' : 'Show'} how this was written</span>
+                <span className="sm:hidden">{showSources ? 'Hide' : 'Show'}</span>
               </button>
             </div>
           </div>
           
           {/* Color legend */}
-          <div className="flex gap-3 text-[9px] text-slate-500 mb-3 pb-2 border-b border-slate-100">
-            <span className="flex items-center gap-1">
-              <span className="inline-block w-2 h-2 rounded-full bg-blue-500"></span>
-              Your company
+          <div className="flex gap-2 sm:gap-3 text-[7px] sm:text-[9px] text-slate-500 mb-2 sm:mb-3 pb-1 sm:pb-2 border-b border-slate-100">
+            <span className="flex items-center gap-0.5 sm:gap-1">
+              <span className="inline-block w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-blue-500"></span>
+              <span className="hidden sm:inline">Your company</span>
+              <span className="sm:hidden">Company</span>
             </span>
-            <span className="flex items-center gap-1">
-              <span className="inline-block w-2 h-2 rounded-full bg-green-500"></span>
-              Lead research
+            <span className="flex items-center gap-0.5 sm:gap-1">
+              <span className="inline-block w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-green-500"></span>
+              <span className="hidden sm:inline">Lead research</span>
+              <span className="sm:hidden">Research</span>
             </span>
-            <span className="flex items-center gap-1">
-              <span className="inline-block w-2 h-2 rounded-full bg-purple-500"></span>
-              Your examples
+            <span className="flex items-center gap-0.5 sm:gap-1">
+              <span className="inline-block w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-purple-500"></span>
+              <span className="hidden sm:inline">Your examples</span>
+              <span className="sm:hidden">Examples</span>
             </span>
           </div>
           
-          <div className="font-mono text-xs text-slate-800 leading-relaxed">
+          <div className="font-mono text-[9px] sm:text-xs text-slate-800 leading-relaxed">
             {emailContent.map((segment, i) => (
               <span key={i} className="relative inline">
                 {segment.text === '' ? (
