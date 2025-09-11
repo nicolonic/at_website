@@ -15,6 +15,10 @@
     {
       "source": "/post/:path*",
       "destination": "https://autotouch-ai-blog.webflow.io/post/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
