@@ -7,6 +7,7 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+  const isPricingPage = location.pathname === '/pricing';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -81,14 +82,16 @@ export default function Header() {
 
             {/* Navigation - Center */}
             <nav className="hidden md:flex items-center space-x-8" role="navigation">
-              {isHomePage ? (
-                <a href="#key-features" className="text-slate-600 hover:text-slate-900 transition-colors">
-                  Features
-                </a>
-              ) : (
-                <Link to="/#key-features" className="text-slate-600 hover:text-slate-900 transition-colors">
-                  Features
-                </Link>
+              {!isPricingPage && (
+                isHomePage ? (
+                  <a href="#key-features" className="text-slate-600 hover:text-slate-900 transition-colors">
+                    Features
+                  </a>
+                ) : (
+                  <Link to="/#key-features" className="text-slate-600 hover:text-slate-900 transition-colors">
+                    Features
+                  </Link>
+                )
               )}
               <Link to="/pricing" className="text-slate-600 hover:text-slate-900 transition-colors">
                 Pricing
@@ -179,22 +182,24 @@ export default function Header() {
             
             {/* Menu Items */}
             <nav className="flex-1 px-4 py-6 space-y-1">
-              {isHomePage ? (
-                <a 
-                  href="#key-features" 
-                  className="block px-3 py-2 text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Features
-                </a>
-              ) : (
-                <Link 
-                  to="/#key-features" 
-                  className="block px-3 py-2 text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Features
-                </Link>
+              {!isPricingPage && (
+                isHomePage ? (
+                  <a 
+                    href="#key-features" 
+                    className="block px-3 py-2 text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Features
+                  </a>
+                ) : (
+                  <Link 
+                    to="/#key-features" 
+                    className="block px-3 py-2 text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Features
+                  </Link>
+                )
               )}
               <Link 
                 to="/pricing" 
