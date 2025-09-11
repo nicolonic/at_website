@@ -8,12 +8,12 @@ const STATES = {
 };
 
 export default function Showcase() {
-  const [currentTab, setCurrentTab] = useState(0);
+  const [currentTab, setCurrentTab] = useState(1); // Start on Research tab
   const [state, setState] = useState(
     tokens.showcase.autoplay.enabled ? STATES.AUTOPLAYING : STATES.PAUSED
   );
   const [progress, setProgress] = useState(0);
-  const [focusedTab, setFocusedTab] = useState(0);
+  const [focusedTab, setFocusedTab] = useState(1); // Focus on Research tab
   const [videoDurations, setVideoDurations] = useState({});
   
   const intervalRef = useRef(null);
