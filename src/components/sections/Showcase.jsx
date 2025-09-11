@@ -14,10 +14,12 @@ export default function Showcase() {
   );
   const [progress, setProgress] = useState(0);
   const [focusedTab, setFocusedTab] = useState(0);
+  const [videoDurations, setVideoDurations] = useState({});
   
   const intervalRef = useRef(null);
   const progressIntervalRef = useRef(null);
   const containerRef = useRef(null);
+  const videoRefs = useRef({});
 
   const tabs = tokens.showcase.tabs;
   const { perTabMs, progressUpdateMs } = tokens.showcase.autoplay;
@@ -37,28 +39,33 @@ export default function Showcase() {
     clearIntervals();
     setProgress(0);
 
+    // Use actual video duration if available, otherwise fall back to perTabMs
+    const currentVideoDuration = videoDurations[currentTab] 
+      ? videoDurations[currentTab] * 1000 // Convert to ms
+      : perTabMs;
+
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
     if (prefersReducedMotion) {
       intervalRef.current = setInterval(() => {
         setCurrentTab(prev => (prev + 1) % tabs.length);
         setProgress(0);
-      }, perTabMs);
+      }, currentVideoDuration);
     } else {
       let progressValue = 0;
       progressIntervalRef.current = setInterval(() => {
         progressValue += progressUpdateMs;
-        const progressNormalized = progressValue / perTabMs;
+        const progressNormalized = progressValue / currentVideoDuration;
         setProgress(Math.min(progressNormalized, 1));
         
-        if (progressValue >= perTabMs) {
+        if (progressValue >= currentVideoDuration) {
           setCurrentTab(prev => (prev + 1) % tabs.length);
           progressValue = 0;
           setProgress(0);
         }
       }, progressUpdateMs);
     }
-  }, [tabs.length, perTabMs, progressUpdateMs, clearIntervals]);
+  }, [tabs.length, perTabMs, progressUpdateMs, clearIntervals, currentTab, videoDurations]);
 
   const pauseAutoplay = useCallback(() => {
     clearIntervals();
@@ -76,7 +83,7 @@ export default function Showcase() {
     }
 
     return () => clearIntervals();
-  }, [state, startAutoplay, pauseAutoplay, clearIntervals]);
+  }, [state, currentTab, startAutoplay, pauseAutoplay, clearIntervals]);
 
   const handleTabClick = useCallback((index) => {
     setCurrentTab(index);
@@ -180,12 +187,21 @@ export default function Showcase() {
                   {/* Show video for each tab */}
                   {tab.asset ? (
                     <video 
+                      ref={el => videoRefs.current[index] = el}
                       className="w-full h-full object-cover"
                       autoPlay={currentTab === index}
                       muted
-                      loop
                       playsInline
                       key={`${tab.id}-${currentTab === index}`}
+                      onLoadedMetadata={(e) => {
+                        const duration = e.target.duration;
+                        if (duration && !isNaN(duration) && duration !== Infinity) {
+                          setVideoDurations(prev => ({
+                            ...prev,
+                            [index]: duration
+                          }));
+                        }
+                      }}
                     >
                       <source src={tab.asset} type="video/mp4" />
                       <div className="w-full h-full flex items-center justify-center">
