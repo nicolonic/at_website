@@ -33,11 +33,7 @@ export default function Footer() {
                 )}
               </li>
               <li>
-                {isHomePage ? (
-                  <a href="#pricing" className="text-slate-400 hover:text-white text-sm transition-colors">Pricing</a>
-                ) : (
-                  <Link to="/#pricing" className="text-slate-400 hover:text-white text-sm transition-colors">Pricing</Link>
-                )}
+                <Link to="/pricing" className="text-slate-400 hover:text-white text-sm transition-colors">Pricing</Link>
               </li>
               <li><span className="text-slate-400 text-sm">Integrations (Coming Soon)</span></li>
               <li><span className="text-slate-400 text-sm">API (Coming Soon)</span></li>
