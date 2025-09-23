@@ -40,7 +40,7 @@ export default function OutcomesGrid() {
           ))}
         </div>
         <div className="mt-8 flex gap-3">
-          <a className="btn btn-primary">Start for free</a>
+          <a href="https://www.autotouch.ai/talk-to-sales" className="btn btn-primary">Book a demo</a>
           <a className="btn btn-ghost">Watch 90-sec demo</a>
         </div>
       </section>

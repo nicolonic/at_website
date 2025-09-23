@@ -38,7 +38,7 @@ export const tokens = {
     "chipText": "Built by GTM and Sales Experts",
     "title": "Pipeline, engineered",
     "subtitle": "Run your most ambitious GTM plays in one system",
-    "primaryCta": { "label": "Start for free", "href": "/start-free-trial" },
+    "primaryCta": { "label": "Book a demo", "href": "https://www.autotouch.ai/talk-to-sales" },
     "secondaryCta": { "label": "Talk to sales", "href": "/talk-to-sales" }
   },
   "showcase": {
@@ -111,7 +111,7 @@ export const tokens = {
   ],
   "trialCta": {
     "title": "Start with a 14-day free trial.",
-    "primary": { "label": "Start for free", "href": "/start-free-trial" },
+    "primary": { "label": "Book a demo", "href": "https://www.autotouch.ai/talk-to-sales" },
     "secondary": { "label": "See plans", "href": "https://autotouch.ai/pricing" }
   }
 };

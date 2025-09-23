@@ -145,8 +145,8 @@ export default function PipelineSection() {
 
       {/* CTA row */}
       <div className="mt-8 flex items-center justify-center gap-3">
-        <a href="/start" className="inline-flex items-center rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium shadow hover:shadow-md transition">
-          Start for free
+        <a href="https://www.autotouch.ai/talk-to-sales" className="inline-flex items-center rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium shadow hover:shadow-md transition">
+          Book a demo
         </a>
         <a href="/demo" className="inline-flex items-center rounded-full border px-5 py-2.5 text-sm font-medium hover:bg-accent transition">
           Watch 90-sec demo

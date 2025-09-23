@@ -72,7 +72,7 @@ export default function PricingPage() {
               highlight={false}
               blurb="Great for kicking the tires and testing workflows."
               includedCreditLabel="200 credits / mo"
-              ctaLabel="Start for free"
+              ctaLabel="Book a demo"
             />
 
             <ProPlanCard
@@ -94,7 +94,7 @@ export default function PricingPage() {
                 highlight={false}
                 blurb="Great for kicking the tires and testing workflows."
                 includedCreditLabel="200 credits / mo"
-                ctaLabel="Start for free"
+                ctaLabel="Book a demo"
               />
             ) : (
               <ProPlanCard
@@ -197,15 +197,15 @@ function PlanCard({ name, price, priceSuffix = '', badge, blurb, includedCreditL
       </ul>
 
       <div className="mt-8">
-        <Link 
-          to="/start-free-trial" 
-          className={cn('inline-flex items-center justify-center rounded-xl px-4 py-2.5 font-semibold shadow-sm transition', 
+        <a
+          href="https://www.autotouch.ai/talk-to-sales"
+          className={cn('inline-flex items-center justify-center rounded-xl px-4 py-2.5 font-semibold shadow-sm transition',
             highlight ? 'bg-indigo-600 text-white hover:bg-indigo-500' : 'border border-slate-300 bg-white text-slate-900 hover:bg-slate-50'
           )}
         >
           {ctaLabel}
           <ArrowRight className="ml-2 size-4" />
-        </Link>
+        </a>
       </div>
     </div>
   );
