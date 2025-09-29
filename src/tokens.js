@@ -37,7 +37,7 @@ export const tokens = {
   "hero": {
     "chipText": "Built by GTM and Sales Experts",
     "title": "Pipeline, engineered",
-    "subtitle": "Run your most ambitious GTM plays in one system",
+    "subtitle": "The AI-powered platform built for modern SDR teams",
     "primaryCta": { "label": "Book a demo", "href": "https://www.autotouch.ai/talk-to-sales" },
     "secondaryCta": { "label": "Talk to sales", "href": "/talk-to-sales" }
   },
