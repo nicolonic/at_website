@@ -26,7 +26,7 @@ export default function Hero() {
         <div className="text-center">
           <div className="mb-6">
             <span 
-              className="inline-flex items-center px-3 py-1.5 rounded-pill text-xs font-medium bg-chip-bg border border-chip-border text-slate-700"
+              className="inline-flex items-center px-4 py-2 rounded-pill text-sm font-medium bg-chip-bg border-2 border-chip-border text-slate-700 shadow-sm"
               role="status"
               aria-label="Product announcement"
             >
@@ -60,18 +60,18 @@ export default function Hero() {
               {tokens.hero.primaryCta.label}
             </Link>
             <span id="primary-cta-description" className="sr-only">
-              Start using {tokens.brand.name} for free
+              Book a demo with the {tokens.brand.name} team
             </span>
 
-            <Link 
-              to={tokens.hero.secondaryCta.href}
+            <a 
+              href={tokens.hero.secondaryCta.href}
               className="w-full sm:w-auto border-2 border-slate-300 text-slate-700 px-6 py-3 rounded-pill text-base font-semibold hover:border-slate-400 hover:bg-slate-50 transition-all duration-200 min-h-[44px] flex items-center justify-center"
               aria-describedby="secondary-cta-description"
             >
               {tokens.hero.secondaryCta.label}
-            </Link>
+            </a>
             <span id="secondary-cta-description" className="sr-only">
-              Schedule a demo with our sales team
+              Learn how Smart Table works
             </span>
           </div>
         </div>

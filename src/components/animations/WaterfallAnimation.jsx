@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 const PROVIDERS = [
   { id: 'leadmagic', name: 'LeadMagic', logo: '/leadmagic.svg' },
+  { id: 'contactout', name: 'ContactOut', logo: '/@contactout.png' },
   { id: 'prospeo', name: 'Prospeo', logo: '/prospeo logo.avif' },
   { id: 'findymail', name: 'FindYmail', logo: 'https://www.findymail.com/images/logo/findymail.svg' },
   { id: 'zerobounce', name: 'ZeroBounce', logo: '/zb.png', isVerifier: true }

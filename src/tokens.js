@@ -39,7 +39,7 @@ export const tokens = {
     "title": "The Sales OS for outbound teams",
     "subtitle": "Surface the right accounts, verify contacts, and engage faster with context.",
     "primaryCta": { "label": "Book a demo", "href": "https://www.autotouch.ai/talk-to-sales" },
-    "secondaryCta": { "label": "See it in action", "href": "/#how-it-works" }
+    "secondaryCta": { "label": "See it in action", "href": "#how-it-works" }
   },
   "showcase": {
     "tabs": [

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { tokens } from '../../tokens.js';
 import RecipeCarousel from '../animations/RecipeCarousel';
 import ResearchAnimation from '../animations/ResearchAnimation';
-import PersonalizeAnimation from '../animations/PersonalizeAnimation';
+import WaterfallAnimation from '../animations/WaterfallAnimation';
 import IntegrationsAnimation from '../animations/IntegrationsAnimation';
 
 // Recipe cards for the Build lists carousel
@@ -79,17 +79,13 @@ const chapters = [
     poster: '/assets/videos/research_poster.jpg'
   },
   {
-    id: 'personalize',
+    id: 'enrich',
     number: '03',
-    label: 'Personalize',
-    title: 'Write real emails, fast.',
-    subtitle: 'AI that combines your company context, target research, and writing style to create authentic outreach.',
-    checklist: ['Uses your value prop & messaging', 'Pulls in target research', 'Matches your writing style'],
-    chips: [
-      { text: 'Uses research', x: 15, y: 18, speed: 0.9 },
-      { text: 'Real context', x: 70, y: 22, speed: 1.1 },
-      { text: 'Human tone', x: 30, y: 70, speed: 1.2, status: true }
-    ],
+    label: 'Enrich',
+    title: 'Waterfall data enrichment',
+    subtitle: 'Emails and mobiles verified automatically via multi‑provider waterfalls.',
+    checklist: null,
+    chips: [],
     video: '/assets/videos/personalize_chapter.mp4',
     poster: '/assets/videos/personalize_poster.jpg'
   },
@@ -97,8 +93,8 @@ const chapters = [
     id: 'engage',
     number: '04',
     label: 'Engage',
-    title: 'Send from your stack.',
-    subtitle: 'Multi-channel sequences that work with Gmail, Outlook, and your tools.',
+    title: 'Engage with context',
+    subtitle: 'Calls and email in one place—with research attached.',
     checklist: ['Your email client', 'Any sales tool'],
     chips: [
       { text: 'Gmail', x: 10, y: 25, speed: 0.9 },
@@ -115,6 +111,7 @@ function ChapterSection({ chapter, index }) {
   const sectionRef = useRef(null);
   const chipsRef = useRef([]);
   const [isVisible, setIsVisible] = useState(false);
+  const [isPhone, setIsPhone] = useState(true);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -237,8 +234,26 @@ function ChapterSection({ chapter, index }) {
                   <RecipeCarousel recipes={chapter.recipes} isActive={isVisible} />
                 ) : chapter.id === 'research' ? (
                   <ResearchAnimation isActive={isVisible} />
-                ) : chapter.id === 'personalize' ? (
-                  <PersonalizeAnimation isActive={isVisible} />
+                ) : chapter.id === 'enrich' ? (
+                  <div className="relative h-full w-full">
+                    <div className="absolute top-3 right-3 z-10 bg-white/90 backdrop-blur-sm border border-slate-200 rounded-full shadow-sm px-1 py-1 flex items-center gap-1">
+                      <button
+                        type="button"
+                        aria-label="Phone waterfall"
+                        className={`px-2 h-7 rounded-full text-[11px] font-medium transition ${isPhone ? 'bg-blue-600 text-white' : 'bg-slate-200 text-slate-700'}`}
+                        onClick={() => setIsPhone(true)}
+                        title="Phone waterfall"
+                      >Phone</button>
+                      <button
+                        type="button"
+                        aria-label="Email waterfall"
+                        className={`px-2 h-7 rounded-full text-[11px] font-medium transition ${!isPhone ? 'bg-blue-600 text-white' : 'bg-slate-200 text-slate-700'}`}
+                        onClick={() => setIsPhone(false)}
+                        title="Email waterfall"
+                      >Email</button>
+                    </div>
+                    <WaterfallAnimation isActive={isVisible} isPhone={isPhone} />
+                  </div>
                 ) : chapter.id === 'engage' ? (
                   <IntegrationsAnimation isActive={isVisible} />
                 ) : (
@@ -267,7 +282,7 @@ function ChapterSection({ chapter, index }) {
                 */}
 
                 {/* Floating chips - only show if sections don't have their own animations */}
-                {chapter.id !== 'build' && chapter.id !== 'research' && chapter.id !== 'personalize' && chapter.id !== 'engage' && chapter.chips.map((chip, i) => (
+                {chapter.id !== 'build' && chapter.id !== 'research' && chapter.id !== 'enrich' && chapter.id !== 'engage' && chapter.chips.map((chip, i) => (
                   <span
                     key={i}
                     ref={el => chipsRef.current[i] = el}
