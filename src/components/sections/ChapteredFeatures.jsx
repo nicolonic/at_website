@@ -3,7 +3,7 @@ import { tokens } from '../../tokens.js';
 import RecipeCarousel from '../animations/RecipeCarousel';
 import ResearchAnimation from '../animations/ResearchAnimation';
 import WaterfallAnimation from '../animations/WaterfallAnimation';
-import IntegrationsAnimation from '../animations/IntegrationsAnimation';
+import EngageAnimation from '../animations/EngageAnimation';
 
 // Recipe cards for the Build lists carousel
 const listRecipes = [
@@ -224,7 +224,7 @@ function ChapterSection({ chapter, index }) {
           <div className={visualColClass}>
             <div className="lg:sticky lg:top-24">
               <div className={`
-                relative rounded-2xl overflow-hidden shadow-xl bg-slate-900
+                relative rounded-2xl overflow-hidden shadow-xl bg-white
                 aspect-video lg:aspect-[16/10]
                 transition-all duration-700 ease-out
                 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
@@ -255,7 +255,7 @@ function ChapterSection({ chapter, index }) {
                     <WaterfallAnimation isActive={isVisible} isPhone={isPhone} />
                   </div>
                 ) : chapter.id === 'engage' ? (
-                  <IntegrationsAnimation isActive={isVisible} />
+                  <EngageAnimation />
                 ) : (
                   <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900">
                     <div className="absolute inset-0 flex items-center justify-center">
