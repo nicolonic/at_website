@@ -83,7 +83,7 @@ export const tokens = {
     { "src": "/logos/ibm.svg", "alt": "IBM", "fallback": "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" }
   ],
   "quote": {
-    "text": "Our SDRs spend 75% less time on prospect research. The mobile quality is the best we’ve seen.",
+    "text": "Our SDRs spend 75% less time on research. All the information they need is right there on their tasks. The data quality has been the best we've seen.",
     "author": "Margaret Chen",
     "role": "Head of Business Operations · Modal"
   },
