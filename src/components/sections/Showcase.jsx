@@ -113,6 +113,7 @@ export default function Showcase() {
 
   return (
     <section 
+      id="how-it-works"
       className="pt-8 pb-0 bg-white"
       aria-labelledby="showcase-heading"
       ref={containerRef}
@@ -121,7 +122,7 @@ export default function Showcase() {
         {/* Section Header */}
         <div className="text-center mb-6">
           <p className="text-base text-slate-500 font-normal">
-            From idea to pipeline...
+            From account to execution
           </p>
         </div>
 
