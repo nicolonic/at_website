@@ -35,11 +35,11 @@ export const tokens = {
     "scrollThreshold": 48
   },
   "hero": {
-    "chipText": "Built by GTM and Sales Experts",
+    "chipText": "Built by former sales reps",
     "title": "Pipeline, engineered",
-    "subtitle": "The AI-powered platform built for modern SDR teams",
+    "subtitle": "Find and research your best accounts, verify contact data, and start conversations — all in one tool.",
     "primaryCta": { "label": "Book a demo", "href": "https://www.autotouch.ai/talk-to-sales" },
-    "secondaryCta": { "label": "Talk to sales", "href": "/talk-to-sales" }
+    "secondaryCta": { "label": "See it in action", "href": "/#key-features" }
   },
   "showcase": {
     "tabs": [
