@@ -224,7 +224,7 @@ function ChapterSection({ chapter, index }) {
           <div className={visualColClass}>
             <div className="lg:sticky lg:top-24">
               <div className={`
-                relative rounded-2xl overflow-hidden shadow-xl bg-white
+                relative rounded-2xl overflow-hidden shadow-xl ${chapter.id === 'enrich' ? 'bg-slate-900' : 'bg-white'}
                 aspect-video lg:aspect-[16/10]
                 transition-all duration-700 ease-out
                 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}

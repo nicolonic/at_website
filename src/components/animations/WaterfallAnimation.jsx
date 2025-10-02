@@ -2,11 +2,14 @@ import { useState, useEffect } from 'react';
 
 const PROVIDERS = [
   { id: 'leadmagic', name: 'LeadMagic', logo: '/leadmagic.svg' },
-  { id: 'contactout', name: 'ContactOut', logo: '/@contactout.png' },
+  { id: 'contactout', name: 'ContactOut', logo: '/contactout.png' },
   { id: 'prospeo', name: 'Prospeo', logo: '/prospeo logo.avif' },
   { id: 'findymail', name: 'FindYmail', logo: 'https://www.findymail.com/images/logo/findymail.svg' },
   { id: 'zerobounce', name: 'ZeroBounce', logo: '/zb.png', isVerifier: true }
 ];
+
+// Show provider logos; apply white-on-dark filter for visibility on dark bg.
+const SHOW_LOGOS = true;
 
 const SAMPLE_LEADS = [
   { name: 'sarah.chen', domain: 'techcorp.io' },
@@ -130,23 +133,26 @@ export default function WaterfallAnimation({ isActive, isPhone = false }) {
               <div 
                 className={`
                   relative flex items-center gap-2 sm:gap-3 p-2 sm:p-2.5 rounded-lg border transition-all duration-700 ease-out transform
-                  ${isActive && !isSuccess && !isPassed ? 'border-blue-500/50 bg-blue-500/5 sm:translate-x-1' : ''}
-                  ${isSuccess ? 'border-green-500/50 bg-green-500/5 sm:scale-[1.02]' : ''}
-                  ${isPassed ? 'border-slate-700 bg-slate-800/30 opacity-40 sm:scale-[0.98]' : 'border-slate-700 bg-slate-800/20'}
+                  ${isActive && !isSuccess && !isPassed ? 'border-blue-400/60 bg-blue-500/10 sm:translate-x-1' : ''}
+                  ${isSuccess ? 'border-green-400/60 bg-green-500/10 sm:scale-[1.02]' : ''}
+                  ${isPassed ? 'border-slate-600 bg-slate-700/25 opacity-40 sm:scale-[0.98]' : 'border-slate-600 bg-slate-700/30'}
                   ${!isActive ? 'opacity-30 sm:scale-95' : ''}
                 `}
                 style={{
                   transitionDelay: `${index * 50}ms`
                 }}
               >
-                {/* Logo */}
-                <div className="w-12 sm:w-16 flex items-center justify-center flex-shrink-0">
-                  <img 
-                    src={provider.logo} 
-                    alt={provider.name}
-                    className={`h-3 sm:h-4 w-auto ${!isActive ? 'grayscale opacity-50' : ''}`}
-                  />
-                </div>
+                {/* Logo (optional) */}
+                {SHOW_LOGOS && (
+                  <div className="w-10 sm:w-12 flex items-center justify-center flex-shrink-0">
+                    <img 
+                      src={provider.logo} 
+                      alt={provider.name}
+                      className={`h-3 sm:h-4 w-auto ${!isActive ? 'opacity-60' : 'opacity-90'}`}
+                      loading="lazy"
+                    />
+                  </div>
+                )}
                 
                 {/* Name */}
                 <div className="flex-1 min-w-0">
