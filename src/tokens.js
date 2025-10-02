@@ -83,7 +83,7 @@ export const tokens = {
     { "src": "/logos/ibm.svg", "alt": "IBM", "fallback": "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" }
   ],
   "quote": {
-    "text": "My SDRs were productive in 10 minutes, not 10 weeks. When we needed help with our outbound strategy, we got advice from people who've actually carried quotas.",
+    "text": "Our SDRs spend 75% less time on prospect research. The mobile quality is the best we’ve seen.",
     "author": "Margaret Chen",
     "role": "Head of Business Operations · Modal"
   },
