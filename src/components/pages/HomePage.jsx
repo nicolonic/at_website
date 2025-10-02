@@ -3,7 +3,7 @@ import Showcase from '../sections/Showcase';
 import LogoStrip from '../sections/LogoStrip';
 import ScrollingQuote from '../sections/ScrollingQuote';
 import ChapteredFeatures from '../sections/ChapteredFeatures';
-import KeyFeatures from '../sections/KeyFeatures';
+// import KeyFeatures from '../sections/KeyFeatures';
 import TrialCTA from '../shared/TrialCTA';
 
 export default function HomePage() {
@@ -14,7 +14,7 @@ export default function HomePage() {
       <LogoStrip />
       <ScrollingQuote />
       <ChapteredFeatures />
-      <KeyFeatures />
+      {/* <KeyFeatures /> */}
       <TrialCTA />
     </main>
   );
