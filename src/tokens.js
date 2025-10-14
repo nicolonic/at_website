@@ -36,7 +36,7 @@ export const tokens = {
   },
   "hero": {
     "chipText": "Built by sellers",
-    "title": "The Sales OS for outbound teams",
+    "title": "Less work. More pipeline.",
     "subtitle": "Surface the right accounts, verify contacts, and engage faster with context.",
     "primaryCta": { "label": "Book a demo", "href": "https://www.autotouch.ai/talk-to-sales" },
     "secondaryCta": { "label": "See it in action", "href": "#how-it-works" }
