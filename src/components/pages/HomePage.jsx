@@ -1,5 +1,5 @@
 import Hero from '../sections/Hero';
-import Showcase from '../sections/Showcase';
+// import Showcase from '../sections/Showcase';
 import LogoStrip from '../sections/LogoStrip';
 import ScrollingQuote from '../sections/ScrollingQuote';
 import ChapteredFeatures from '../sections/ChapteredFeatures';
@@ -10,7 +10,7 @@ export default function HomePage() {
   return (
     <main id="main-content">
       <Hero />
-      <Showcase />
+      {/* <Showcase /> */}
       <LogoStrip />
       <ScrollingQuote />
       <ChapteredFeatures />

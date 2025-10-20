@@ -185,7 +185,8 @@ export default function Showcase() {
             >
               <div className="p-8">
                 <div className="aspect-video bg-gradient-to-br from-slate-50 to-white rounded-2xl overflow-hidden shadow-xl">
-                  {/* Show video for each tab */}
+                  {/* Videos commented out - will add back later */}
+                  {/* 
                   {tab.asset ? (
                     <video 
                       ref={el => videoRefs.current[index] = el}
@@ -221,6 +222,16 @@ export default function Showcase() {
                       </div>
                     </div>
                   )}
+                  */}
+                  
+                  {/* Placeholder content while videos are commented out */}
+                  <div className="w-full h-full flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="w-20 h-20 bg-slate-200 rounded-2xl mx-auto mb-4 animate-pulse"></div>
+                      <span className="text-slate-500 text-lg font-medium">{tab.label} Preview</span>
+                      <p className="text-slate-400 text-sm mt-2">Video coming soon</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
