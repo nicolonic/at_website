@@ -35,7 +35,7 @@ export const tokens = {
     "scrollThreshold": 48
   },
   "hero": {
-    "chipText": "Built by sellers",
+    "chipText": "Built by former sales reps",
     "title": "More pipeline. Less work.",
     "subtitle": "Let reps focus on conversations. AI does the research, and our built-in dialer gets them on the phone faster.",
     "primaryCta": { "label": "Book a demo", "href": "https://www.autotouch.ai/talk-to-sales" },
