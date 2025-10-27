@@ -37,7 +37,7 @@ export const tokens = {
   "hero": {
     "chipText": "Built by sellers",
     "title": "More pipeline. Less work.",
-    "subtitle": "Let reps focus on conversations. AI does the research/admin, and our built-in dialer gets them on the phone faster.",
+    "subtitle": "Let reps focus on conversations. AI does the research, and our built-in dialer gets them on the phone faster.",
     "primaryCta": { "label": "Book a demo", "href": "https://www.autotouch.ai/talk-to-sales" },
     "secondaryCta": { "label": "See it in action", "href": "#how-it-works" }
   },
